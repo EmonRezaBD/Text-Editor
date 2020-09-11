@@ -81,11 +81,26 @@ main_menu.add_cascade(label = 'color_theme', menu=color_theme)
 
 
 
-
-
-
 ############################# tootlbar #####################################
 ############################ toolbar ending ###############################
+
+#print(type(tk.font.families()))
+
+tool_bar = ttk.Label(main_application)
+tool_bar.pack(side=tk.TOP,fill=tk.X) #Will be placed in the upperside. tk.X for horizontally Fill.
+
+font_tuple = tk.font.families()
+font_family = tk.StringVar()
+font_box = ttk.Combobox(tool_bar, width=30,textvariable = font_family, state='readonly' )
+font_box['values'] = font_tuple
+font_box.current(font_tuple.index('Times New Roman'))
+font_box.grid(row=0,column=0, padx=5)
+
+##Size Box
+
+
+
+
 
 ############################# text editor #####################################
 ############################ text editor ending ###############################
