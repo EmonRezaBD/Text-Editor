@@ -72,10 +72,19 @@ color_theme = tk.Menu(main_menu, tearoff=False)
 theme_choice = tk.StringVar()
 color_icons = (light_default_icon,light_plus_icon,dark_icon,red_icon,monokai_icon,night_blue_icon)
 
-color_dict = {
-	'light_defaultt'
+color_dict = { #dictionary
+	'Light Default': ('#000000' , '#fffffff'), #ff-> text color, ss->background color
+	'Light Plus' : ('#474747', '#e0e0e0'),
+	'Dark': ('#c4c4c4','#2d2d2d'),
+	'Red': ('#2d2d2d','#ffe8e8'),
+	'Monokai' :('#d3b774','#474747'),
+	'Night Blue':('#ededed','#6b9dc2')
 }
 
+count = 0
+for i in color_dict:
+	color_theme.add_radiobutton(label= i, image=color_icons[count], variable=theme_choice, compound=tk.LEFT)
+	count+=1
 
 
 ###cascade
