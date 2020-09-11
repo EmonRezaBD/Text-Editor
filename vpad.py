@@ -100,11 +100,24 @@ font_box.grid(row=0,column=0, padx=5)
 
 size_var  = tk.IntVar()
 font_size = ttk.Combobox(tool_bar, width=14, textvariable=size_var,state='readonly')
-font_size['values'] = tuple(range(8,80,1)) # ++ incraese
+font_size['values'] = tuple(range(8,81)) # ++ incraese
 font_size.current(4)
 font_size.grid(row=0,column=1,padx=5)
 
+##bold button
+bold_icon = tk.PhotoImage(file='icons2/bold.png')
+bold_btn = ttk.Button(tool_bar, image = bold_icon)
+bold_btn.grid(row=0,column=2,padx=5)
 
+##italic Button
+italic_icon = tk.PhotoImage(file='icons2/italic.png')
+italic_btn = ttk.Button(tool_bar, image=italic_icon)
+italic_btn.grid(row=0,column=3,padx=5)
+
+##Underline Button
+underline_icon = tk.PhotoImage(file='icons2/underline.png')
+underline_btn = ttk.Button(tool_bar,image = underline_icon)
+underline_btn.grid(row=0, column=4, padx=5)
 
 
 
