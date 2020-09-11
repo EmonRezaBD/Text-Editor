@@ -59,8 +59,24 @@ view = tk.Menu(main_menu, tearoff=False)
 view.add_checkbutton(label='Tool Bar',image=tool_bar_icon,compound=tk.LEFT)
 view.add_checkbutton(label='Status Bar',image=status_bar_icon,compound=tk.LEFT)
 
+#### Color_Theme
+light_default_icon = tk.PhotoImage(file='icons2/light_default.png')
+light_plus_icon = tk.PhotoImage(file='icons2/light_plus.png')
+dark_icon = tk.PhotoImage(file='icons2/dark.png')
+red_icon = tk.PhotoImage(file='icons2/red.png')
+monokai_icon = tk.PhotoImage(file='icons2/monokai.png')
+night_blue_icon = tk.PhotoImage(file='icons2/night_blue.png')
 
 color_theme = tk.Menu(main_menu, tearoff=False)
+
+theme_choice = tk.StringVar()
+color_icons = (light_default_icon,light_plus_icon,dark_icon,red_icon,monokai_icon,night_blue_icon)
+
+color_dict = {
+	'light_defaultt'
+}
+
+
 
 ###cascade
 main_menu.add_cascade(label = 'file', menu=file)
