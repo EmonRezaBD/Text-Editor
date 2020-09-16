@@ -82,7 +82,6 @@ main_menu.add_cascade(label = 'color_theme', menu=color_theme)
 
 
 ############################# tootlbar #####################################
-############################ toolbar ending ###############################
 
 #print(type(tk.font.families()))
 
@@ -129,16 +128,23 @@ align_left_icon = tk.PhotoImage(file='icons2/align_left.png')
 align_left_btn = ttk.Button(tool_bar, image=align_left_icon)
 align_left_btn.grid(row=0,column=6,padx=5)
 
-
+##Align Center
 align_center_icon = tk.PhotoImage(file='icons2/align_center.png')
+align_center_btn = ttk.Button(tool_bar, image=align_center_icon)
+align_center_btn.grid(row=0, column=7,padx=5)
+
+
+##Algin Right
 align_right_icon = tk.PhotoImage(file='icons2/align_right.png')
-
-
-
-
+align_right_btn = ttk.Button(tool_bar, image=align_right_icon)
+align_right_btn.grid(row=0, column=8, padx=5)
+############################ toolbar ending ###############################
 
 
 ############################# text editor #####################################
+
+
+
 ############################ text editor ending ###############################
 
 ############################# main status bar #####################################
