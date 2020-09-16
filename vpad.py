@@ -192,9 +192,25 @@ def change_italic():
 		text_editor.configure(font = (current_font_family,current_font_size,'normal'))
 italic_btn.configure(command=change_italic)
 
+##Underline functionality
+def change_underline():
+	text_property = tk.font.Font(font =text_editor['font'])
+	if text_property.actual()['underline'] == 0:
+		text_editor.configure(font = (current_font_family,current_font_size,'underline'))
+	if text_property.actual()['underline'] == 1:
+		text_editor.configure(font = (current_font_family,current_font_size,'normal'))
+underline_btn.configure(command=change_underline)
 
 
+##font color functionality
+def change_font_color():
+	color_var = tk.colorchooser.askcolor()
+	# print(color_var) #this will show a tuple made with RGB val and a hexa color code.
+	text_editor.configure(fg = color_var[1]) #1 because we take the hexa value.
 
+font_color_btn.configure(command=change_font_color)
+
+### Align functionality
 
 
 text_editor.configure(font=('Times New Roman',12)) # By deafult will type in Arial.
