@@ -156,12 +156,12 @@ text_editor.config(yscrollcommand=scroll_bar.set)
 current_font_family = 'Times New Roman'
 current_font_size = 12
 
-def change_font(main_application):
+def change_font(event = None): #main_application
 	global current_font_family
 	current_font_family = font_family.get() #which font be given by user is getting by this func
 	text_editor.configure(font = (current_font_family,current_font_size) )
 
-def change_fontsize(main_application):
+def change_fontsize(event=None):
 	global current_font_size
 	current_font_size = size_var.get() #which font be given by user is getting by this func
 	text_editor.configure(font = (current_font_family,current_font_size) )
@@ -170,6 +170,28 @@ def change_fontsize(main_application):
 
 font_box.bind("<<ComboboxSelected>>",change_font) #Bind the function with combobox.
 font_size.bind("<<ComboboxSelected>>", change_fontsize)
+
+################## Buttons Functionality
+
+#bold button functionality
+def change_bold():
+	text_property = tk.font.Font(font=text_editor['font'])
+	if text_property.actual()['weight'] == 'normal':
+		text_editor.configure(font = (current_font_family,current_font_size,'bold'))
+	if text_property.actual()['weight'] == 'bold':
+		text_editor.configure(font = (current_font_family,current_font_size,'normal'))
+
+bold_btn.configure(command=change_bold) #This is a button, that's why we give a command.
+
+
+
+
+
+
+
+
+
+
 text_editor.configure(font=('Times New Roman',12)) # By deafult will type in Arial.
 
 
