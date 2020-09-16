@@ -4,7 +4,7 @@ from tkinter import font, colorchooser, filedialog, messagebox
 import os
 
 main_application = tk.Tk()
-main_application.geometry('1200x800')
+main_application.geometry('800x600')
 main_application.title('vpad text Editor')
 
 ############################# main menu #####################################
@@ -152,9 +152,37 @@ text_editor.pack(fill=tk.BOTH, expand=True)
 scroll_bar.config(command =text_editor.yview)
 text_editor.config(yscrollcommand=scroll_bar.set)
 
+#font family and font size functionality
+current_font_family = 'Times New Roman'
+current_font_size = 12
+
+def change_font(main_application):
+	global current_font_family
+	current_font_family = font_family.get() #which font be given by user is getting by this func
+	text_editor.configure(font = (current_font_family,current_font_size) )
+
+font_box.bind("<<ComboboxSelected>>",change_font) #Bind the function with combobox.
+text_editor.configure(font=('Times New Roman',12)) # By deafult will type in Arial.
+
+
+
 ############################ text editor ending ###############################
 
 #############################  status bar #####################################
+status_bar = ttk.Label(main_application, text='Status Bar')
+status_bar.pack(side = tk.BOTTOM) #When you know , where to place the thing then use pack otherwise use grid.
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ############################ main statur bar ending ###############################
