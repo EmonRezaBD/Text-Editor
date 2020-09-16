@@ -142,12 +142,21 @@ align_right_btn.grid(row=0, column=8, padx=5)
 
 
 ############################# text editor #####################################
+text_editor = tk.Text(main_application)
+text_editor.config(wrap='word', relief =tk.FLAT) # if word is getting full then it will start from next line.
 
-
+scroll_bar = tk.Scrollbar(main_application) # scroll bar will appear in right side.
+text_editor.focus_set() # cursor will blink
+scroll_bar.pack(side=tk.RIGHT, fill=tk.Y)
+text_editor.pack(fill=tk.BOTH, expand=True)
+scroll_bar.config(command =text_editor.yview)
+text_editor.config(yscrollcommand=scroll_bar.set)
 
 ############################ text editor ending ###############################
 
-############################# main status bar #####################################
+#############################  status bar #####################################
+
+
 ############################ main statur bar ending ###############################
 
 ############################# main menu functionality #####################################
