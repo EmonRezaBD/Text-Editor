@@ -234,7 +234,7 @@ def align_right():
 	text_editor.tag_config('right', justify = tk.RIGHT)
 	text_editor.delete(1.0,tk.END) 
 	text_editor.insert(tk.INSERT, text_content,'right')
-	
+
 align_right_btn.configure(command=align_right)
 
 
@@ -248,6 +248,20 @@ text_editor.configure(font=('Times New Roman',12)) # By deafult will type in Ari
 status_bar = ttk.Label(main_application, text='Status Bar')
 status_bar.pack(side = tk.BOTTOM) #When you know , where to place the thing then use pack otherwise use grid.
 
+text_chnaged = False
+def changed(event=None):
+	global text_chnaged
+	if text_editor.edit_modified():
+		text_chnaged = True
+		words = len(text_editor.get(1.0, 'end-1c').split()) #If we just use 'end' then they count the newline. so , we need to use 'end-1c'.
+		characters = len(text_editor.get(1.0, 'end-1c'))
+		##If we want not to count the spaces
+		# characters = len(text_editor.get(1.0, 'end-1c').replace(' ','')) #spaces will be replaced .
+
+		status_bar.config(text= f'characters : {characters} Words : {words}')
+	text_editor.edit_modified(False)
+
+text_editor.bind('<<Modified>>',changed)		
 
 
 
@@ -264,11 +278,16 @@ status_bar.pack(side = tk.BOTTOM) #When you know , where to place the thing then
 ############################ main statur bar ending ###############################
 
 ############################# main menu functionality #####################################
-############################ main menu functionality ending ###############################
+
+url = ''
+def new_file(event=None):
+	global url                ###working procedure: If data is present from before then it will be deleted . SO , we are getting new file.
+	url = ''
+	text_editor.delete(1.0, tk.END)
 
 ##file command
 
-file.add_command(label='New',image=new_icon,compound=tk.LEFT, accelerator='Ctrl+N')
+file.add_command(label='New',image=new_icon,compound=tk.LEFT, accelerator='Ctrl+N',command=new_file)
 file.add_command(label='open',image=open_icon,compound=tk.LEFT, accelerator='Ctrl+O')
 file.add_command(label='Save',image=save_icon,compound=tk.LEFT, accelerator='Ctrl+S')
 file.add_command(label='Save as',image=save_as_icon,compound=tk.LEFT, accelerator='Ctrl+Alt+S')
@@ -294,4 +313,7 @@ for i in color_dict:
 	count+=1
 
 main_application.config(menu=main_menu)
+
+
+############################ main menu functionality ending ###############################
 main_application.mainloop()
