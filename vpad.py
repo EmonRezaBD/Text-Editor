@@ -210,7 +210,32 @@ def change_font_color():
 
 font_color_btn.configure(command=change_font_color)
 
-### Align functionality
+### Align left functionality
+def align_left():
+	text_content = text_editor.get(1.0 ,'end') #we will store everything from first to last written in text editor.
+	text_editor.tag_config('left', justify = tk.LEFT)
+	text_editor.delete(1.0,tk.END) 
+	text_editor.insert(tk.INSERT, text_content,'left')
+
+align_left_btn.configure(command=align_left)
+
+##Align center functionality
+def align_center():
+	text_content = text_editor.get(1.0 ,'end') #we will store everything from first to last written in text editor.
+	text_editor.tag_config('center', justify = tk.CENTER)
+	text_editor.delete(1.0,tk.END) 
+	text_editor.insert(tk.INSERT, text_content,'center')
+
+align_center_btn.configure(command=align_center)
+
+##right alignment 
+def align_right():
+	text_content = text_editor.get(1.0 ,'end') #we will store everything from first to last written in text editor.
+	text_editor.tag_config('right', justify = tk.RIGHT)
+	text_editor.delete(1.0,tk.END) 
+	text_editor.insert(tk.INSERT, text_content,'right')
+	
+align_right_btn.configure(command=align_right)
 
 
 text_editor.configure(font=('Times New Roman',12)) # By deafult will type in Arial.
