@@ -119,6 +119,23 @@ underline_icon = tk.PhotoImage(file='icons2/underline.png')
 underline_btn = ttk.Button(tool_bar,image = underline_icon)
 underline_btn.grid(row=0, column=4, padx=5)
 
+##Font Color button
+font_color_icon = tk.PhotoImage(file='icons2/font_color.png')
+font_color_btn = ttk.Button(tool_bar, image=font_color_icon)
+font_color_btn.grid(row=0,column=5,padx=5)
+
+##Align left
+align_left_icon = tk.PhotoImage(file='icons2/align_left.png')
+align_left_btn = ttk.Button(tool_bar, image=align_left_icon)
+align_left_btn.grid(row=0,column=6,padx=5)
+
+
+align_center_icon = tk.PhotoImage(file='icons2/align_center.png')
+align_right_icon = tk.PhotoImage(file='icons2/align_right.png')
+
+
+
+
 
 
 ############################# text editor #####################################
