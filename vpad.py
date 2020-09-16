@@ -280,15 +280,33 @@ text_editor.bind('<<Modified>>',changed)
 ############################# main menu functionality #####################################
 
 url = ''
+
+#### New_File Functionality 
 def new_file(event=None):
 	global url                ###working procedure: If data is present from before then it will be deleted . SO , we are getting new file.
 	url = ''
 	text_editor.delete(1.0, tk.END)
 
+#### Open Functionality
+
+def open_file(event=None):
+	global url
+	url = filedialog.askopenfilename( initialdir = os.getcwd(), title='Select File', filetypes = ( ('Text File','*.txt'),('All files','*.*') ) )
+	try:
+		with open(url, 'r') as fr:
+			text_editor.delete(1.0, tk.END)
+			text_editor.insert(1.0, fr,read())
+	except FileNotFoundError:
+		return
+	except:
+		return
+	main_application.title(os.path.basename(url))	
+
+
 ##file command
 
 file.add_command(label='New',image=new_icon,compound=tk.LEFT, accelerator='Ctrl+N',command=new_file)
-file.add_command(label='open',image=open_icon,compound=tk.LEFT, accelerator='Ctrl+O')
+file.add_command(label='open',image=open_icon,compound=tk.LEFT, accelerator='Ctrl+O',command = open_file)
 file.add_command(label='Save',image=save_icon,compound=tk.LEFT, accelerator='Ctrl+S')
 file.add_command(label='Save as',image=save_as_icon,compound=tk.LEFT, accelerator='Ctrl+Alt+S')
 file.add_command(label='Exit',image=exit_icon,compound=tk.LEFT, accelerator='Ctrl+Q')
