@@ -161,7 +161,15 @@ def change_font(main_application):
 	current_font_family = font_family.get() #which font be given by user is getting by this func
 	text_editor.configure(font = (current_font_family,current_font_size) )
 
+def change_fontsize(main_application):
+	global current_font_size
+	current_font_size = size_var.get() #which font be given by user is getting by this func
+	text_editor.configure(font = (current_font_family,current_font_size) )
+
+
+
 font_box.bind("<<ComboboxSelected>>",change_font) #Bind the function with combobox.
+font_size.bind("<<ComboboxSelected>>", change_fontsize)
 text_editor.configure(font=('Times New Roman',12)) # By deafult will type in Arial.
 
 
