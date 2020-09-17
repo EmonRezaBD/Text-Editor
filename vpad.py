@@ -302,12 +302,32 @@ def open_file(event=None):
 		return
 	main_application.title(os.path.basename(url))	
 
+##Save file functionality
+
+def save_file(event=None):
+	global url
+	try:
+		if url:
+			content = str(text_editor.get(1.0,tk.END))
+			with open(url, 'w', encoding = 'utf-8') as fw:
+				fw.write(content)
+		else:
+			url = filedialog.asksaveasfile( mode = 'w', defaultextension='.txt',filetypes = ( ('Text File','*.txt'),('All files','*.*') ) )
+			content2 = text_editor.get(1.0,tk.END)
+			url.write(content)  
+			url.close()
+	except:
+		return
+#### Change kore file save kore editor kete dile , pore abar open korle saved jinis thakteche na.
+
+
+
 
 ##file command
 
 file.add_command(label='New',image=new_icon,compound=tk.LEFT, accelerator='Ctrl+N',command=new_file)
 file.add_command(label='open',image=open_icon,compound=tk.LEFT, accelerator='Ctrl+O',command = open_file)
-file.add_command(label='Save',image=save_icon,compound=tk.LEFT, accelerator='Ctrl+S')
+file.add_command(label='Save',image=save_icon,compound=tk.LEFT, accelerator='Ctrl+S',command = save_file)
 file.add_command(label='Save as',image=save_as_icon,compound=tk.LEFT, accelerator='Ctrl+Alt+S')
 file.add_command(label='Exit',image=exit_icon,compound=tk.LEFT, accelerator='Ctrl+Q')
 
