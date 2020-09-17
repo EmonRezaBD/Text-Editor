@@ -62,7 +62,7 @@ theme_choice = tk.StringVar()
 color_icons = (light_default_icon,light_plus_icon,dark_icon,red_icon,monokai_icon,night_blue_icon)
 
 color_dict = { #dictionary
-	'Light Default': ('#000000' , '#fffffff'), #ff-> text color, ss->background color
+	'Light Default': ('#000000' , '#ffffff'), #ff-> text color, ss->background color
 	'Light Plus' : ('#474747', '#e0e0e0'),
 	'Dark': ('#c4c4c4','#2d2d2d'),
 	'Red': ('#2d2d2d','#ffe8e8'),
@@ -476,14 +476,24 @@ def hide_statusbar():
 	    show_statusbar = True
 
 
-
 view.add_checkbutton(label='Tool Bar',onvalue = True, offvalue = 0, variable= show_toolbar,image=tool_bar_icon,compound=tk.LEFT,command = hide_toolbar)
 view.add_checkbutton(label='Status Bar',onvalue=1,offvalue=False,variable= show_statusbar, image=status_bar_icon,compound=tk.LEFT,command = hide_statusbar)
 
 #color theme
+
+def change_theme():
+	chosen_theme = theme_choice.get()
+	color_tuple = color_dict.get(chosen_theme)
+	fg_color, bg_color = color_tuple[0], color_tuple[1]
+	text_editor.config(background=bg_color, fg=fg_color) # fg means foregruound color
+
+
+
+
+
 count = 0
 for i in color_dict:
-	color_theme.add_radiobutton(label= i, image=color_icons[count], variable=theme_choice, compound=tk.LEFT)
+	color_theme.add_radiobutton(label= i, image=color_icons[count], variable=theme_choice, compound=tk.LEFT, command = change_theme)
 	count+=1
 
 main_application.config(menu=main_menu)
