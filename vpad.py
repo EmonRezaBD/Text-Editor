@@ -331,7 +331,31 @@ def save_as(event=None):
 	except:
 		return
 
+##Exit functionality
+def exit_func(event=None):
+	global url, text_chnaged
+	try:
+		if text_chnaged:
+			mbox = messagebox.askyesnocancel('Warnings','Do you want to save the file ?')
+			if mbox is True: # yes , no or cancel
+				if url: # If we want to save the existing file
+					content = text_editor.get(1.0, tk.END)
+					with open(url,'w',encoding='utf-8') as fw:
+						fw.write(content)
+						main_application.destroy()
+				else: # file doeesn't exist from before.
+					content2 = str( text_editor.get(1.0, tk.END) )
+					url = filedialog.asksaveasfile( mode = 'w', defaultextension='.txt',filetypes = ( ('Text File','*.txt'),('All files','*.*') ) )
+					url.write(content2)
+					url.close()
+					main_application.destroy()
+			elif mbox is False:
+				main_application.destroy()		
 
+		else:
+			main_application.destroy()		
+	except:
+		return	
 
 ##file command
 
@@ -339,7 +363,7 @@ file.add_command(label='New',image=new_icon,compound=tk.LEFT, accelerator='Ctrl+
 file.add_command(label='open',image=open_icon,compound=tk.LEFT, accelerator='Ctrl+O',command = open_file)
 file.add_command(label='Save',image=save_icon,compound=tk.LEFT, accelerator='Ctrl+S',command = save_file)
 file.add_command(label='Save as',image=save_as_icon,compound=tk.LEFT, accelerator='Ctrl+Alt+S',command = save_as)
-file.add_command(label='Exit',image=exit_icon,compound=tk.LEFT, accelerator='Ctrl+Q')
+file.add_command(label='Exit',image=exit_icon,compound=tk.LEFT, accelerator='Ctrl+Q',command = exit_func)
 
 ##edit command
 
