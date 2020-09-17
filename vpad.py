@@ -295,7 +295,7 @@ def open_file(event=None):
 	try:
 		with open(url, 'r') as fr:
 			text_editor.delete(1.0, tk.END)
-			text_editor.insert(1.0, fr,read())
+			text_editor.insert(1.0, fr.read())
 	except FileNotFoundError:
 		return
 	except:
