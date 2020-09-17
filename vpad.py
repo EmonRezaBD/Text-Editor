@@ -320,6 +320,16 @@ def save_file(event=None):
 		return
 #### Change kore file save kore editor kete dile , pore abar open korle saved jinis thakteche na.
 
+##Save as functionality
+def save_as(event=None):
+	global url
+	try:
+		content = text_editor.get(1.0,tk.END)
+		url = filedialog.asksaveasfile( mode = 'w', defaultextension='.txt',filetypes = ( ('Text File','*.txt'),('All files','*.*') ) )
+		url.write(content)
+		url.close()
+	except:
+		return
 
 
 
@@ -328,7 +338,7 @@ def save_file(event=None):
 file.add_command(label='New',image=new_icon,compound=tk.LEFT, accelerator='Ctrl+N',command=new_file)
 file.add_command(label='open',image=open_icon,compound=tk.LEFT, accelerator='Ctrl+O',command = open_file)
 file.add_command(label='Save',image=save_icon,compound=tk.LEFT, accelerator='Ctrl+S',command = save_file)
-file.add_command(label='Save as',image=save_as_icon,compound=tk.LEFT, accelerator='Ctrl+Alt+S')
+file.add_command(label='Save as',image=save_as_icon,compound=tk.LEFT, accelerator='Ctrl+Alt+S',command = save_as)
 file.add_command(label='Exit',image=exit_icon,compound=tk.LEFT, accelerator='Ctrl+Q')
 
 ##edit command
