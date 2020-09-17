@@ -6,6 +6,7 @@ import os
 main_application = tk.Tk()
 main_application.geometry('800x600')
 main_application.title('vpad text Editor')
+main_application.wm_iconbitmap('icon.ico')
 
 ############################# main menu #####################################
 ############################ main menu ending ###############################
