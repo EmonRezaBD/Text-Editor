@@ -498,6 +498,14 @@ for i in color_dict:
 
 main_application.config(menu=main_menu)
 
-
 ############################ main menu functionality ending ###############################
+
+main_application.bind("<Control-n>", new_file)
+main_application.bind("<Control-o>", open_file)
+main_application.bind("<Control-s>", save_file)
+main_application.bind("<Control-Alt-s>", save_as)
+main_application.bind("<Control-q>", exit_func)
+main_application.bind("<Control-f>", find_func)
+
+
 main_application.mainloop()
